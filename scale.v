@@ -3,7 +3,7 @@
 // Company: 
 // Engineer: 
 // 
-// Create Date: 15.06.2026 16:49:04
+// Create Date: 15.12.2025 16:49:04
 // Design Name: 
 // Module Name: scale
 // Project Name: 
@@ -119,8 +119,8 @@ else begin
    
   S3:begin
      wb <= a - wa;
-     if(last == 1'd1) out_memR[base] <= ((wa)*in_memR[addr]) >> 8;
-     else if(rw == 1'd1) out_memR[base] <= ((wa)*in_memR[addr + Win]) >> 8;
+      if(last == 1'd1) out_memR[base] <= ((wa)*in_memR[addr]) >> 8;     
+      else if(rw == 1'd1) out_memR[base] <= ((wa)*in_memR[addr + Win]) >> 8;   
      else if(dw == 1'd1) out_memR[base] <= ((wa)*in_memR[addr + 1]) >> 8;
      else out_memR[base] <= ((wa)*in_memR[addr + 1 + Win]) >> 8;
      state <= S4;
@@ -151,8 +151,9 @@ else begin
      if(CHANNELS == 3) state <= S7;
      else state <= S15;
    end
+       
  // Green Channel
-  // --- GREEN CHANNEL ---
+ 
    S7:begin
      if(last == 1'd1) out_memG[base] <= ((wa)*in_memG[addr]) >> 8;
      else if(rw == 1'd1) out_memG[base] <= ((wa)*in_memG[addr + Win]) >> 8;
@@ -182,7 +183,7 @@ else begin
      state <= S11;
    end
    
-   // --- BLUE CHANNEL ---
+   // BLUE CHANNEL 
    S11:begin
      if(last == 1'd1) out_memB[base] <= ((wa)*in_memB[addr]) >> 8;
      else if(rw == 1'd1) out_memB[base] <= ((wa)*in_memB[addr + Win]) >> 8;
