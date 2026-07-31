@@ -85,3 +85,34 @@ This state reuse is what allows a single multiplier and a single accumulate path
 ## Simulation
 
 A testbench (`testbench.v`) instantiates the module with sample dimensions and clocks it until `done` is asserted:
+
+## Examples
+
+Two sample scaling runs are included in this repo (see `input_image_1.jpeg`, `input_image_2.jpeg`, `scaled_output (1).png`, `scaled_output_gray.png`):
+
+### Example 1 — `input_image_1.jpeg`
+
+| Parameter    | Description        | Value |
+|--------------|---------------------|-------|
+| `Win`        | Input image width   | 626   |
+| `Hin`        | Input image height  | 351   |
+| `Wout`       | Output image width  | 3840  |
+| `Hout`       | Output image height | 2160  |
+| `CHANNELS`   | `1` = grayscale, `3` = RGB | 3 |
+
+**Scale factor:** ~6.13x width, ~6.15x height (626×351 → 3840×2160)
+
+### Example 2 — `input_image_2.jpeg`
+
+| Parameter    | Description        | Value |
+|--------------|---------------------|-------|
+| `Win`        | Input image width   | 275   |
+| `Hin`        | Input image height  | 183   |
+| `Wout`       | Output image width  | 2160  |
+| `Hout`       | Output image height | 1800  |
+| `CHANNELS`   | `1` = grayscale, `3` = RGB | 1 |
+
+**Scale factor:** ~7.85x width, ~9.84x height (275×183 → 2160×1800)
+
+> Note: these are non-integer scale ratios, so the scaler must handle
+> fractional/interpolated scaling rather than simple pixel replication.
