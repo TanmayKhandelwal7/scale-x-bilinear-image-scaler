@@ -114,5 +114,3 @@ Two sample scaling runs are included in this repo (see `input_image_1.jpeg`, `in
 
 **Scale factor:** ~7.85x width, ~9.84x height (275×183 → 2160×1800)
 
-> Note: these are non-integer scale ratios, so the scaler must handle
-> fractional/interpolated scaling rather than simple pixel replication.
